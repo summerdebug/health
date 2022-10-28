@@ -12,6 +12,13 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 @Slf4j
 public class HealthExceptionHandler {
 
+  @ExceptionHandler(HealthRecordNotFoundException.class)
+  public ResponseEntity<ResponseMessage> recordNotFound(HealthRecordNotFoundException e) {
+    log.error("Record not found exception", e);
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        .body(new ResponseMessage(e.getMessage()));
+  }
+
   @ExceptionHandler(HealthException.class)
   public ResponseEntity<ResponseMessage> healthException(HealthException e) {
     log.error("Health application exception", e);

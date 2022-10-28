@@ -1,10 +1,12 @@
 package com.example.health.service.csv;
 
 import com.example.health.exception.HealthException;
+import com.example.health.exception.HealthRecordNotFoundException;
 import com.example.health.model.HealthInfo;
 import com.example.health.repository.HealthInfoRepository;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,12 @@ public class CsvService {
 
   public ByteArrayInputStream getAll() {
     List<HealthInfo> records = healthInfoRepository.findAll();
+    return CsvHelper.healthInfoToCsv(records);
+  }
+
+  public ByteArrayInputStream get(String code) {
+    List<HealthInfo> records = healthInfoRepository.findByCode(code)
+        .map(Collections::singletonList).orElseThrow(HealthRecordNotFoundException::new);
     return CsvHelper.healthInfoToCsv(records);
   }
 }
