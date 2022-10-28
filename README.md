@@ -8,7 +8,7 @@ Send POST request to URL http://localhost:8080/api/csv/upload with form-data, ke
 In browser hit a URL: http://localhost:8080/api/csv/download/all
 
 ## Get a record by code
-In browser hit a URL: http://localhost:8080/api/csv/download/code/http://localhost:8080/api/csv/download/code/415974002
+In browser hit a URL: http://localhost:8080/api/csv/download/code/415974002
 
 ## Delete all records
 Send POST-request to URL: http://localhost:8080/api/csv/delete/all
