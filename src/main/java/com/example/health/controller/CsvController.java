@@ -53,6 +53,13 @@ public class CsvController {
     return getCsvFile(stream);
   }
 
+  @PostMapping("/delete/all")
+  public ResponseEntity<ResponseMessage> deleteAll() {
+    csvService.deleteAll();
+    return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(
+        "All records deleted successfully."));
+  }
+
   private ResponseEntity<Resource> getCsvFile(ByteArrayInputStream stream) {
     InputStreamResource file = new InputStreamResource(stream);
     return ResponseEntity.ok()

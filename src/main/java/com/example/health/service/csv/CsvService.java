@@ -40,4 +40,8 @@ public class CsvService {
         .map(Collections::singletonList).orElseThrow(HealthRecordNotFoundException::new);
     return CsvHelper.healthInfoToCsv(records);
   }
+
+  public void deleteAll() {
+    healthInfoRepository.deleteAll();
+  }
 }
