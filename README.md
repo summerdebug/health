@@ -12,6 +12,3 @@ In browser hit a URL: http://localhost:8080/api/csv/download/code/415974002
 
 ## Delete all records
 Send POST-request to URL: http://localhost:8080/api/csv/delete/all
-
-# Notice
-If I had more time, I would write unit-tests as well.
